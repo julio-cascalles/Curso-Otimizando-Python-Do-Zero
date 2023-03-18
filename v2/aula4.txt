@@ -1,0 +1,65 @@
+Agora vamos começar a "v2" do código, acrescentando novos recursos e testando.
+Primeiro copie a pasta v1 e mude o nome da cópia para `"v2"`
+
+Para esta aula, você vai baixar dos recursos do curso, o arquivo ranking.csv
+e vai copiá-lo para a pasta dados dentro de v2.
+
+Este arquivo tem o id, nome e capital de 50 empresas.
+
+Para importar esses dados, vamos ter que mexer na classe
+Empresa -- mas antes, a gente vai alterar o método save
+-- Esse método a classe <Empresa> herdou de MongoTable
+e ocorre quando os dados são enviados para o MongoDB
+
+No luga da palavra-chave "pass" a gente vai colocar
+a definição do método save que é "def save(self)"
+*-- Esse `self` aparece dentro da classe para fazer
+referência a cada objeto dessa classe.
+
+A ideia de alterar o "save" vai ser que quando a empresa
+for criada, vai iniciar o histórico de cotação...
+Para isso a gente faz uma pesquisa em Historico
+
+    [if not Historico.find(empresa=self.id)]
+Se nada for encontrado no Histórico como lançamento inicial,
+então o primeiro Historico será gravado.
+    [Historico(...).save()]
+Para identificar o Historico inicial, seu <id>
+vai ser igual ao `id` da empresa (Se fosse gravado sem 
+id o campo seria auto-incremento.)
+
+Depois de dar o save no Histórico, chamamos
+o save que Empresa herdou da classe pai,
+através de super().save()
+* -- Esse super faz referência `^a classe pai.
+
+Agora  vamos fazer outro método da classe Empresa
+mas ele NÃO vai ter o parâmetro "self"
+porque não faz referência a cada objeto da classe.
+Na verdade ele é um método para a classe como um todo
+    [@classmethod]
+Então a gente coloca esse decorator...
+...e também o parâmetro agora é o <cls>
+que se refere à classe que usa esse método.
+
+O nosso método vai se chamar `importa`
+    [with open...]
+e vai ler um arquivo percorrendo seus dados
+e gravando uma empresa.
+    [Empresa(**dados).save()]
+Esses dois asteriscos indicam para colocar os
+campos de dados nos parâmetros de mesmo nome
+(Assim dados.id vai para id, dados.nome vai para nome...)
+
+Só tem um problema...Se a gente deixar assim vai dar erro
+porque na definição dos tipos de campos da Empresa
+a gente disse que capital é um número tipo flutuante
+(um valor que a gente usa pra dinheiro, por exemplo)
+
+Então a gente vai converter para `float`
+    [dados['capital'] = float(dados['capital'])]
+...antes de gravar a empresa.
+
+===================================
+------------------------
+

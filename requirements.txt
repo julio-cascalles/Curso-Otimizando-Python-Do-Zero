@@ -1,0 +1,6 @@
+pymongo
+fastAPI
+pydantic
+pytest
+uvicorn
+faker

@@ -1,0 +1,100 @@
+Aula 1 - Criando os modelos de dados
+=============================
+
+Bem vindo ao primeiro dia de desenvolvimento!
+
+Esta aula acompanha um arquivo que você precisa baixar
+(na parte de RECURSOS da aula) 
+	Esse arquivo é o mongo_table.py
+Ele é uma versão extremamente simplificada de 
+acesso a dados por objetos -- e isso dispensa toda a
+parafernalha de frameworks tipo Django ou SqlAlchemy --
+	-- para nosso código não ficar lento, pesado
+	ou burocrático demais.
+
+Primeiro de tudo, crie uma pasta para o projeto.
+Você pode colocar o nome que quiser, mas eu sugiro
+"bolsa de valores" porque é um projeto para simular
+a compra e venda de ações de empresas.
+
+Depois que vc criou a pasta, crie uma subpasta chamada
+"v1" -- que vai ser a primeira versão do código.
+
+Use seu editor preferido para navegar nessa pasta.
+Eu gosto do VsCode, então vocês vão ver eu mexendo no
+VsCode -- mas você pode usar o que quiser.
+
+Agora, a gente vai criar a classe de validação dos dados.
+Dentro da pasta atual -- ou seja a "v1" -- a gente vai criar
+a pasta `modelos`. E, em seguida, criar o arquivo base.py
+
+Não se esqueça também de mover para esta pasta ``modelos``
+o arquivo <<mongo_table>>  que a gente acabou de baixar.
+
+Dentro do arquivo BASE.py ...
+Importe a biblioteca pydantic assim:
+<< from pydantic import BaseModel >>
+
+Essa biblioteca pydantic permite interagir com
+o FastAPI no desenvolvimento de API -- E no nosso caso
+a gente vai fazer a modelagem do banco de dados
+e TAMBÉM os parâmetros dos endpoints usando esses objetos.
+
+A primeira classe que a gente lembra que vai usar é 
+a de "Pessoa" porque são elas que vão comprar e vender
+as ações das empresas.
+Para isso, faça assim: Digite `class Pessoa` e -- entre
+parênteses -- o nome da classe pai, que é esse "BaseModel"
+que a gente importou.
+
+Aí você coloca os campos que a pessoa precisa ter
+No caso, todas as classes vão ter um <<id>>
+e a pessoa vai ter um nome e um saldo inicial
+para gastar investindo em ações.
+--- Os campos id e nome são do tipo string (ou seja
+vai conter texto) e o campo saldo é um float para
+valores quebrados, como dinheiro neste caso.
+
+Depois, claro, tem a classe das Empresa -- que também tem nome --
+e possui capital, ou seja o valor dessa empresa, além
+de uma quantidade de cotas que ela pretende dividir esse
+capital.
+A gente vai entrar mais nesse detalhe depois.
+Por enquanto é só os tipos de campos mesmo.
+
+O campo <<cotas>> é um inteiro
+-- agora uma novidade -- a gente pode colocar um
+valor padrão para esse campo.
+Basta colocar um sinal de igual e uma constante à direita.
+Assim ao criar uma empresa sem informar as cotas,
+ela fica automaticamente com o valor de 100 mil.
+
+Normalmente a gente coloca uma classe por arquivo,
+para ficar legal no Clean Code -- Mas neste caso,
+que são apenas classes pequenas, dá pra colocar tudo neste
+arquivo "base.py"
+
+Por último, a gente faz a classe Historico
+do mesmo jeito que a gente fez as outras duas.
+Esse histórico mostra a cotação da ação de uma
+empresa em cada período.
+Sendo assim, ela vai ter o id da empresa
+que a gente vai chamar de <<empresa>>
+o dia em que variou essa cotação -- que é uma data
+
+Só uma interrupção: Esse tipo de data a gente vai ter
+que importar do módulo datetime. Então a gente vai
+lá no import e coloca mais uma linha:
+`from datetime import datetime`
+Isso faz com que o código passe a reconhecer esse tipo de dado.
+
+Aí de volta no campo <<dia>>
+você coloca o tipo `datetime`
+Para colocar um valor padrão nesse campo,
+	vamos usar a função TODAY
+Assim quando não for informado o dia, ele assume
+que é o dia atual.
+
+O último campo é o da cotação, que é float
+para dizer o quanto está valendo a ação
+da empresa naquele dia.

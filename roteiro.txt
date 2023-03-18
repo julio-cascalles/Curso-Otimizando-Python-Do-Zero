@@ -1,0 +1,37 @@
+Imagine que estamos construindo um edifício andar por andar, e testando enquanto colocamos novos componentes -- desde a estrutura (as primeiras linhas de programação), até a parte elétrica (o banco de dados).
+  Neste curso vamos criar uma API do zero e acompanhar sua evolução, começando pelos testes (TDD) e implementando novos recursos aos poucos.
+Isso vai envolver análise, modelagem de dados, desenvolvimento e documentação -- e também vamos publicar o projeto NO SEU github que vai ser o seu portifólio profissional para você mostrar quando for procurar emprego.
+
+No começo vamos fazer só as entidades e as regras de eventos e relacionamentos.
+Nosso projeto será um sistema de investimentos onde uma pessoa usa seu saldo para comprar ações de empresas -- Existirão diversas regras para determinar...
+* O capital da empresa
+* O valor das ações
+* A variação desse valor de acordo com aquisições e resgate
+* Meios de analisar qual empresa é melhor para investir.
+
+No decorrer do curso vamos desenvolver novos recursos, como o de montar carteira de investimento com valor mínimo de investimento, prazo de aplicação e margem de risco.
+
+No final do curso o objetivo é você ter desenvolvido sua própria API com ORM e banco de dados da sua escolha.
+
+Também aprenderemos todos os procedimentos de montagem de ambiente, instalação de frameworks, configurar e usar a ferramenta GIT para controle do repositório (que vamos criar).
+
+Você aprenderá a organizar seu projeto em pastas: Com modelos, rotas web e testes unitários -- Além disso, você criará o README.md para documentar seu repositório e aprenderá a usar as docstrings para documentar a página do Swagger (a interface criada para testar e documentar as rotas da sua aplicação).
+
+Versões
+========
+[v0] ---------------
+	- Instalar Anaconda (com Python)
+	- Instalar GIT
+	- Configurar email e senha GIT
+	- Fazer .gitignore
+	- Criar requirements.txt
+	- Instalar dependências
+	- Cadastrar-se no MongoDB
+	- Criar Banco de dados no ATLAS
+[v1]-----------------
+	- Classes de Pessoa e Empresa
+	- Classe Histórico
+	- Classes de Movimento: Aquisição e Resgate
+	- Fazer validações de data em Histórico e Movimento
+	- Criar testes com FAKER
+

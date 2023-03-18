@@ -1,0 +1,123 @@
+E aí, tudo bem? 
+Hoje a gente vai montar nosso ambiente para acompanhar
+as aulas daqui pra frente.
+
+Tem algumas coisas que vc tem que instalar,
+caso ainda não tenha no seu computador.
+
+Anaconda --> Anaconda é gerenciador de dependências que permite
+isolar cada ambiente de desenvolvimento
+ Essa ferramenta é muito usada em ciência de 
+ dados -- por isso é comum ela já trazer vários
+ pacotes como pandas, numpy...e outras coisas que
+ a gente NÃO vai usar neste curso.
+
+    >> Eu recomendo baixar o Miniconda -- que é uma versão
+    mais simples do Anaconda.
+
+    Procure no google por "miniconda download", baixe
+    o programa e instale.
+
+    Depois de instalar, entre no terminal para testar
+    se o Python foi instalado junto -- Digite:
+    ``python --version``
+    Qualquer versão acima de 3.6 é válida.
+
+    Mas se o sistema não reconhecer o python,
+    entre no site python.org, clique em "Download"
+    e instale normalmente.
+
+    Ainda no terminal, na pasta do projeto,
+        [dir requirements.txt]
+    Repare que existe um arquivo {{{requirements.txt}}}
+    Esse arquivo contém a lista de todas as bibliotecas
+    que precisamos instalar para trabalhar com o python
+    neste projeto.
+    Vamos montar o ambiente chamado "otimizando0"
+    Para isso use o seguinte comando:
+        conda create --name otimizando0 --file requirements.txt
+    ...Isso faz com o que o Anaconda leia o arquivo 
+    e instale todas as bibliotecas no ambiente com esse nome.
+
+    Se não der certo,
+    faça o seguinte:
+        >> conda create --name otimizando0
+        ...e depois...
+        >> pip install -r requirements.txt
+
+    SEMPRE que for trabalhar neste projeto
+    você tem que ativar este ambiente, com o seguinte comando:
+        >> conda activate otimizando0
+
+
+MONGO-DB
+============
+Depois de tudo isso, é a vez da gente
+providenciar o banco de dados na nuvem.
+Nosso banco será o MongoDB.
+Entre no site https://cloud.mongodb.com/ e registre-se
+
+Clique em "Create Database"
+Esta parte é meio chatinha. Ele vai perguntar
+qual servidor você quer.
+Selecione o servidor GRATUITO.
+
+Em seguida, você precisa criar um acesso
+para usar fora do site, remotamente (No nosso
+caso, será dentro da aplicação Python)
+
+Escolha a opção "Database Access" do menu 
+lateral da esquerda -- Adicione o usuário <<root>>
+Clique em "Autogerate password" e use para
+criar no seu sistema operacional a variável
+de ambiente chamada MONGODB_PASSWORD
+
+De volta ao site, antes de confirmar o usuário,
+talvez seja legal dar privilégios de administrador
+ao seu usuário -- Nesse primeiro combobox, 
+selecione "Atlas admin"
+
+Depois disso vai aparecer uma página
+com a lista de clusters que vc tem.
+Clique em "Cluster0"
+Clique em "Connect" e em um dos botões
+(pode ser qualquer um) ... A gente vai 
+pegar a parte do endereço de conexão
+entre "cluster0" e ".mongodb.net"
+Copie esse trecho.
+
+Agora vá no arquivo mongo_table.py
+que você colocou na pasta /modelos dentro da /v1
+Você vai perceber que tem um trecho comentado
+Essa constante URL_HOST permite
+que você conecte localmente
+ou, no nosso caso, num servidor na nuvem.
+
+Comente a parte da conexão local
+e habilite a conexão remota, descomentando
+e editando o parâmetro <<cluster>>
+com o que a gente acabou de copiar
+do site do MongodB.
+(Para quem usa VsCode, dá para comentar
+ou descomentar um trecho selecionado
+apertando CTRL+; ou CTRL+/)
+
+Salve esse arquivo e volte pro site do MongoDB.
+
+Por último, clique na aba "Collections"
+Vai aparecer uma página com dois botões:
+O botão em destaque é para criar a partir
+de templates prontos -- o outro botão
+é o que você vai usar para criar "seus
+próprios dados"  (É o que queremos!)
+
+Ele vai pedir o ""database name"" -- Agora sim
+é o nosso banco de dados: Escreva "teste"
+e no campo de baixo preencha com "Empresa"
+que vai ser a nossa primeira tabela.
+
+
+
+
+Baixe o Mongo Compass:
+https://www.mongodb.com/try/download/compass
