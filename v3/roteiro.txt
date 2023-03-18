@@ -1,9 +1,0 @@
-1) Montagem do ambiente ----------------
-	[Instalação Anaconda]
-	requirements.txt  => pip install -r ...
-2) Classe para validação de dados (Pydantic)
-3) Baixar MongoTable dos recursos da aula
-4) Classes híbridas (MongoTable + Base...)
-	Empresa
-	Historico
-5) Testes unitários
