@@ -12,7 +12,7 @@ client = TestClient(
 MongoTable.DATABASE_NAME = 'teste'
 
 
-@pytest.mark.order(2) # pip install pytest-order !!!!
+@pytest.mark.order(1) # pip install pytest-order !!!!
 def test_cria_pessoas():
     assert grava_grupo(client)
 
