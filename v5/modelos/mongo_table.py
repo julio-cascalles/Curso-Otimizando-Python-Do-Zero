@@ -12,7 +12,7 @@ class MongoTable:
     URL_HOST = 'mongodb+srv://{user}:{password}@{cluster}.mongodb.net/{options}'.format(
         user='root',
         password=os.environ.get('MONGODB_PASSWORD'),
-        cluster='cluster0.t17ebgr',
+        cluster=os.environ.get('MONGODB_CLUSTER'),
         options='?retryWrites=true&w=majority'
     )
 # ---------------------------------

@@ -1,14 +1,17 @@
 from pydantic import BaseModel
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 class Pessoa(BaseModel):
     id: str
     nome: str
+    saldo: float
+
+
+class Empresa(BaseModel):
+    id: str
+    nome: str
     capital: float
-
-
-class Empresa(Pessoa):
     cotas: int = 100_000
 
 

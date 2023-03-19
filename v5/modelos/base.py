@@ -24,7 +24,7 @@ class Movimento(Historico):
     quantidade: int  # Quantas ações compradas ou vendidas
 
     @validator('quantidade')
-    def retorna_positivo(qtd: int):
+    def valida_diferente_de_zero(qtd: int):
         if qtd == 0:
             raise ValueError('A quantidade não pode ser zero.')
         return qtd
