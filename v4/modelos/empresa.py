@@ -23,7 +23,7 @@ class Empresa(base.Empresa, MongoTable):
     @staticmethod
     def evolucao(empresa: str) -> float:
         # dados = Historico.ultimos(empresa=empresa)
-        TEMPORARIO = {
+        HISTORICO_SIMULADO = {
             '17': [
                 Historico(empresa='17', cotacao=18.00),
                 Historico(empresa='17', cotacao=19.00),
@@ -34,7 +34,7 @@ class Empresa(base.Empresa, MongoTable):
             ]
         }
         # ----------------------------------------
-        dados = TEMPORARIO[empresa]
+        dados = HISTORICO_SIMULADO[empresa]
         return sum(
             (prox.cotacao - ant.cotacao) * i
             for i, (ant, prox) in enumerate(
