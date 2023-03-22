@@ -1,7 +1,6 @@
 import pytest
 from fastapi.testclient import TestClient
 from modelos.mongo_table import MongoTable
-
 from rotas.app import create_app
 from testes.pessoa import grava_grupo, melhor_escolha
 from testes.movimento import investe33, resgata_tudo
