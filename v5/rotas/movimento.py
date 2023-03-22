@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
+from modelos import base
 from modelos.historico import Historico, ONTEM
 from modelos.movimento import Movimento
 from modelos.investimento import Investimento
 from modelos.resgate import Resgate
-from modelos import base
 
 router = APIRouter()
 

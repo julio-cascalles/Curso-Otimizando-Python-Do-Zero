@@ -19,6 +19,6 @@ def melhor_escolha(primeira: str, segunda: str):
 @router.put('/grava_pessoa')
 def grava_pessoa(dados: base.Pessoa):
     try:
-        Pessoa(**dados.__dict__).save()
+        Pessoa(**dados.dict()).save()
     except Exception as e:
         raise HTTPException(status_code=400, detail=e.errors())
